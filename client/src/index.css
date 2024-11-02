@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --radius: 0.5rem
+  }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow: inherit;
+    height: inherit;
+    background-color: rgb(244, 245, 247) !important;
+}
+
+#root {
+    height: inherit;
+}
