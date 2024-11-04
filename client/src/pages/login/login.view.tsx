@@ -1,9 +1,9 @@
 
 import { Link } from "react-router-dom";
-import { Button } from "@/components/button"
-import { Input } from "@/components/input"
-import { Label } from "@/components/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/card"
+import { Button } from "@/components/Button"
+import { Input } from "@/components/Input"
+import { Label } from "@/components/Label/Label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/Card"
 
 export const LoginView = () => {
   return (<div className="flex items-center h-full justify-center">
