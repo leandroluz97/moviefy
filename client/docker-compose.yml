@@ -1,0 +1,13 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" # Maps Vite’s default port to your machine
+    volumes:
+      - .:/app         # Maps your local files to the container
+      - /app/node_modules # Avoids conflicts between local and container node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # For hot-reloading compatibility in Docker
