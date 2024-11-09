@@ -7,7 +7,7 @@ export class HttpClient implements IHttpClient{
 
     constructor(private api: AxiosInstance = axios){}
 
-    async send<TResponse, TBody = unknown>(request: HttpRequest<TBody>): Promise<TResponse>{
+    async sendRequest<TResponse, TBody = unknown>(request: HttpRequest<TBody>): Promise<TResponse>{
     const { url, method, headers, body } = request;
         const response: AxiosResponse<TResponse> = await this.api.request<TResponse>({
             url,
