@@ -25,7 +25,7 @@ export class ListMovieService implements IListMoviesService {
             url:'/movies?'  + query.toString(),
             method: HttpMethod.GET,
         }
-        const response = this.httpClient.sendRequest<Pagination<Movie>>(httpOptions)
+        const response = await this.httpClient.sendRequest<Pagination<Movie>>(httpOptions)
         return response
     }
 }
