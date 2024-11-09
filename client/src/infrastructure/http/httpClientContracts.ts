@@ -13,5 +13,5 @@ export type  HttpRequest<TBody> = {
 }
 
 export interface IHttpClient {
-    send: <TResponse, TBody=unknown>(request: HttpRequest<TBody>)=>Promise<TResponse>
+    sendRequest: <TResponse, TBody=unknown>(request: HttpRequest<TBody>)=>Promise<TResponse>
 }
