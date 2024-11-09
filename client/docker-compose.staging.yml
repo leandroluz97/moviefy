@@ -1,0 +1,14 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_ENV=staging  # Pass the staging environment variable
+    ports:
+      - "8080:80"          # Expose Nginx on port 8080
+    env_file:
+      - .env.staging       # Load staging environment variables
+
+# docker-compose -f docker-compose.staging.yml up --build

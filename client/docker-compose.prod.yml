@@ -1,0 +1,14 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_ENV=production  # Pass the production environment variable
+    ports:
+      - "80:80"               # Standard HTTP port
+    env_file:
+      - .env.production        # Load production environment variables
+
+# docker-compose -f docker-compose.prod.yml up --build

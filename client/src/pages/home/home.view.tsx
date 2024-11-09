@@ -71,7 +71,7 @@ const mockCards = [
 export const HomeView = () => {
   return (
 <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Search Movies</h1>
+      <h1 className="text-2xl font-bold mb-6">Search Moviess</h1>
       
       <div className="flex gap-2 mb-8">
         <Input

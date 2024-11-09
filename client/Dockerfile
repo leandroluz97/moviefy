@@ -15,7 +15,6 @@ ARG BUILD_ENV=production
 
 # Set environment variable for Vite to use
 ENV VITE_ENV=$BUILD_ENV
-ENV MY_ENV=
 
 RUN npm run build
 
