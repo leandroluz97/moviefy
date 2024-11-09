@@ -6,7 +6,7 @@ export enum HttpMethod {
 }
 
 export type  HttpRequest<TBody> = {
-    endpoint: string,
+    url: string,
     method: HttpMethod,
     body?: TBody,
     headers?: Record<string, string>
