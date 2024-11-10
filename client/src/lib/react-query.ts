@@ -11,14 +11,18 @@ const queryConfig: DefaultOptions = {
 
 export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
-export type ExtractFnReturnType<FnType extends (...args: unknown[]) => unknown> = Awaited<ReturnType<FnType>>;
+// Type to extract the return type of an asynchronous function
+export type ExtractFnReturnType<FnType extends (...args: unknown[]) => Promise<unknown>> = 
+    Awaited<ReturnType<FnType>>;
 
-export type QueryConfig<QueryFnType extends (...args: unknown[]) => unknown> = Omit<
+// Type-safe query configuration options
+export type QueryConfig<QueryFnType extends (...args: unknown[]) => Promise<unknown>> = Omit<
     UseQueryOptions<ExtractFnReturnType<QueryFnType>>,
     'queryKey' | 'queryFn'
 >;
 
-export type MutationConfig<MutationFnType extends (...args: unknown[]) => unknown> = UseMutationOptions<
+// Type-safe mutation configuration options
+export type MutationConfig<MutationFnType extends (...args: unknown[]) => Promise<unknown>> = UseMutationOptions<
     ExtractFnReturnType<MutationFnType>,
     AxiosError,
     Parameters<MutationFnType>[0]
