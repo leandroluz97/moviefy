@@ -9,11 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { RegisterForm, MutationConfig } from './register.types';
 
-type UseRegisterProps = {
-    config?: MutationConfig;
-    registerService: IRegisterService;
-};
-
 const schema = yup.object().shape({
     firstname: yup.string().required('Firstname is a required field'),
     lastname: yup.string().required('Lastname is a required field'),
@@ -29,6 +24,11 @@ const schema = yup.object().shape({
         .required('Confirm Password is required'),
 });
 
+type UseRegisterProps = {
+    config?: MutationConfig;
+    registerService: IRegisterService;
+};
+
 export const useRegisterModel = ({ config, registerService }: UseRegisterProps) => {
     const form = useForm<RegisterForm>({ resolver: yupResolver(schema) });
 
@@ -38,8 +38,19 @@ export const useRegisterModel = ({ config, registerService }: UseRegisterProps) 
         mutationFn: (options: IRegisterOptions) => registerService.exec(options),
     });
 
+    const submitRegisterForm = async (data: RegisterForm) => {
+        const options: IRegisterOptions = {
+            firstname: data.firstname,
+            lastname: data.lastname,
+            email: data.email,
+            password: data.password,
+        };
+        await mutation.mutateAsync(options);
+    };
+
     return {
         ...mutation,
         ...form,
+        submitRegisterForm,
     };
 };

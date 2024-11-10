@@ -29,8 +29,18 @@ export const useLoginModel = ({ config, loginService }: UseLoginProps) => {
         mutationFn: (options: ILoginOptions) => loginService.exec(options),
     });
 
+    const submitLoginForm = async (data: LoginForm) => {
+        const options: ILoginOptions = {
+            email: data.email,
+            password: data.password,
+        };
+        await mutation.mutateAsync(options);
+        //navigate('/home)
+    };
+
     return {
         ...mutation,
         ...form,
+        submitLoginForm,
     };
 };

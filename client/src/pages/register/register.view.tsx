@@ -11,8 +11,8 @@ import {
 } from '@/components/Card';
 import { Link } from 'react-router-dom';
 import { useRegisterModel } from './register.model';
-import { RegisterForm } from './register.types';
 import { ErrorAlert } from '@/components/ErrorAlert';
+import { Loading } from '@/components/Loading';
 
 type RegisterViewProps = ReturnType<typeof useRegisterModel>;
 
@@ -20,12 +20,10 @@ export const RegisterView = (props: RegisterViewProps) => {
     const {
         handleSubmit,
         register,
+        isLoading,
+        submitRegisterForm,
         formState: { errors },
     } = props;
-
-    const submit = (data: RegisterForm) => {
-        console.log(data);
-    };
 
     return (
         <div className="flex items-center h-full justify-center bg-background">
@@ -35,7 +33,7 @@ export const RegisterView = (props: RegisterViewProps) => {
                     <CardDescription>Create a new account to get started.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form id="register" onSubmit={handleSubmit(submit)}>
+                    <form id="register" onSubmit={handleSubmit(submitRegisterForm)}>
                         <div className="grid w-full items-center gap-4">
                             <div className="flex flex-col text-left space-y-1.5">
                                 <Label htmlFor="firstName">First Name</Label>
@@ -100,8 +98,12 @@ export const RegisterView = (props: RegisterViewProps) => {
                     </form>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-4">
-                    <Button form="register" className="w-full bg-slate-800 text-white">
-                        Register
+                    <Button
+                        disabled={isLoading}
+                        form="register"
+                        className="w-full bg-slate-800 text-white"
+                    >
+                        {isLoading && <Loading className="mx-2" />} Register
                     </Button>
                     <p className="text-sm text-center text-gray-600">
                         Already have an account?{' '}

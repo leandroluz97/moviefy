@@ -11,8 +11,8 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/Card';
-import { LoginForm } from './login.types';
 import { ErrorAlert } from '@/components/ErrorAlert';
+import { Loading } from '@/components/Loading';
 
 type LoginViewProps = ReturnType<typeof useLoginModel>;
 
@@ -20,12 +20,10 @@ export const LoginView = (props: LoginViewProps) => {
     const {
         handleSubmit,
         register,
+        isLoading,
+        submitLoginForm,
         formState: { errors },
     } = props;
-
-    const submit = (data: LoginForm) => {
-        console.log(data);
-    };
 
     return (
         <div className="flex items-center h-full justify-center">
@@ -37,7 +35,7 @@ export const LoginView = (props: LoginViewProps) => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form onSubmit={handleSubmit(submit)}>
+                    <form id="login" onSubmit={handleSubmit(submitLoginForm)}>
                         <div className="grid w-full items-center gap-4">
                             <div className="flex flex-col text-left space-y-1.5">
                                 <Label htmlFor="email">Email</Label>
@@ -69,7 +67,9 @@ export const LoginView = (props: LoginViewProps) => {
                     </form>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-4">
-                    <Button className="w-full bg-slate-800 text-white">Login</Button>
+                    <Button form="login" className="w-full bg-slate-800 text-white">
+                        {isLoading && <Loading className="mx-2" />} Login
+                    </Button>
                     <p className="text-sm text-center text-gray-600">
                         Don't have an account?{' '}
                         <Link to="/auth/register" className="text-blue-600 hover:underline">

@@ -22,7 +22,7 @@ axios.interceptors.request.use(authRequestInterceptor, (error) => Promise.reject
 axios.interceptors.response.use(
     (response) => response.data,
     (error) => {
-        if (error.response.status === 401) {
+        if (error.response?.status === 401) {
             storage.clear();
             window.location.href = '/auth/login';
         }
