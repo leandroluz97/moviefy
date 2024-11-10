@@ -6,5 +6,5 @@ export class Movie {
 
     static create() {
 
-}
+    }
 }
