@@ -23,19 +23,13 @@ export const useHomeModel = ({ config, listMoviesService }: UseListMoviveProps) 
     const textSearch = textSearchQuery ? textSearchQuery : '';
 
     const options: IListOptions = { pageNumber, pageSize, textSearch };
-    //listMoviesService.exec(options);
+
     const queries = useQuery<Pagination<Movie>, AxiosError>({
         ...config,
         queryKey: ['movies'],
-        queryFn: async () => {
-            try {
-                const response = await listMoviesService.exec(options);
-                return response;
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        queryFn: () => listMoviesService.exec(options),
         keepPreviousData: true,
+        useErrorBoundary: false,
     });
     return queries;
 };
