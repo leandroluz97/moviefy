@@ -1,4 +1,4 @@
-import { Movie } from '@/domain/Movie';
+import { Movie } from '@/domain/entites/Movie';
 import { HttpMethod, HttpRequest, IHttpClient } from '@/infrastructure/http/httpClientContracts';
 import { Pagination } from '@/utilities/pagination';
 

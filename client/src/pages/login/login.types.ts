@@ -1,4 +1,4 @@
-import { User } from '@/domain/User';
+import { User } from '@/domain/entites/User';
 import { ILoginOptions } from '@/services/Authentication/AuthenticationService';
 import { AxiosError } from 'axios';
 import { UseMutationOptions } from 'react-query';

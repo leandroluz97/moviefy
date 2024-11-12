@@ -1,4 +1,4 @@
-import { User } from '@/domain/User';
+import { User } from '@/domain/entites/User';
 import { HttpMethod, HttpRequest, IHttpClient } from '@/infrastructure/http/httpClientContracts';
 
 export type IRegisterOptions = {

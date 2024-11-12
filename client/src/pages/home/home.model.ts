@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { IListMoviesService, IListOptions } from '@/services/Movie/MovieService';
 import { QueryConfig } from './home.types';
-import { Movie } from '@/domain/Movie';
+import { Movie } from '@/domain/entites/Movie';
 import { AxiosError } from 'axios';
 import { Pagination } from '@/utilities/pagination';
 import { useSearchParams } from 'react-router-dom';
