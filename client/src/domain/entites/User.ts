@@ -1,9 +1,5 @@
-interface CreateUserOptions {
-    id: string;
-    email: string;
-    firstname: string;
-    lastname: string;
-}
+import { CreateUserOptions } from '../types/User';
+
 export class User {
     constructor(
         public id: string,
