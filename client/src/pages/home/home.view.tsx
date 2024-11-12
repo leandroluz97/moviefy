@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/CardItem';
 import { Input } from '@/components/Input';
 import { useHomeModel } from './home.model';

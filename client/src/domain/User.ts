@@ -1,9 +1,24 @@
+interface CreateUserOptions {
+    id: string;
+    email: string;
+    firstname: string;
+    lastname: string;
+}
 export class User {
-    constructor() {
-        
+    constructor(
+        public id: string,
+        public email: string,
+        public firstname: string,
+        public lastname: string
+    ) {
+        this.id = id;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    static create() {
-
+    static create(options: CreateUserOptions) {
+        const { id, email, firstname, lastname } = options;
+        return new User(id, email, firstname, lastname);
     }
 }
