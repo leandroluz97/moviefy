@@ -1,8 +1,8 @@
-import { Home } from "@/pages/home";
+import { Home } from '@/pages/home';
 
 export const protectedRoutes = [
-  {
-    path: '/home',
-    element: <Home />,
-  },
+    {
+        path: '/app',
+        element: <Home />,
+    },
 ];
