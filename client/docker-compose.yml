@@ -1,15 +1,16 @@
 version: '3'
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"  # Maps Nginx's port 80 in the container to port 3000 on your machine
-    volumes:
-      - .:/app        # Maps your local files to the container
-      - /app/node_modules # Avoids conflicts between local and container node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true # For hot-reloading compatibility in Docker
+    frontend:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - '3000:3000' # Maps Nginx's port 80 in the container to port 3000 on your machine
+        volumes:
+            - .:/app # Maps your local files to the container
+            - /app/node_modules # Avoids conflicts between local and container node_modules
+        environment:
+            - CHOKIDAR_USEPOLLING=true # For hot-reloading compatibility in Docker
 
 # docker-compose up
+# docker-compose down --rmi all --volumes --remove-orphans
