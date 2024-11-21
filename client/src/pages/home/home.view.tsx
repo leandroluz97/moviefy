@@ -1,5 +1,6 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/CardItem';
 import { Input } from '@/components/Input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/Select';
 import { useHomeModel } from './home.model';
 import { Loading } from '@/components/Loading';
 const mockCards = [
@@ -78,6 +79,16 @@ export const HomeView = (props: HomeViewProps) => {
             <h1 className="text-2xl font-bold mb-6">Search Moviess</h1>
             <div className="flex gap-2 mb-8">
                 <Input type="text" placeholder="Search articles..." className="" />
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Theme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="light">Light</SelectItem>
+                        <SelectItem value="dark">Dark</SelectItem>
+                        <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
             {isError ? (
                 <p>Something went wrong!</p>
